@@ -1,7 +1,7 @@
 # GenZ_CodePad
 Beta version. [[WARNING THERE WILL BE BUGS IN BETA]]
 
-Future IDE. Go to docs/roadmap.md to see our roadmap.
+Future IDE. Go to roadmap.md to see our roadmap.
 
 DM me on Discord for information: hax0rslayer#0577
  

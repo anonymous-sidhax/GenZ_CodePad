@@ -1,7 +1,10 @@
 # GenZ_CodePad
-Idea: Speak to Code with advanced ML for auto code 
+Beta version. [[WARNING THERE WILL BE BUGS IN BETA]]
+Future IDE. Go to docs/roadmap.md to see our roadmap.
+
+DM me on Discord for information: hax0rslayer#0577
  
-## Contributers
+## Contributors
 **Frontend**
 - Rohit Saini
 

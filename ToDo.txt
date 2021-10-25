@@ -11,3 +11,10 @@ Name suggestions for The IDE:
   - Zen Codepad 
   - Jarvis IDE
   - GenZ CODEPAD
+
+
+Future Features:
+  - highlighting
+  - auto complete
+  - go to definition
+  - documentation on hover/double click

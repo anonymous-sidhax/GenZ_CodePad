@@ -3,7 +3,13 @@ Idea: Speak to Code with advanced ML for auto code
  
 ## Contributers
 **Frontend**
-- Rohit Saini
+ - Rohit Saini
+ - Cerberus
+ - Ravenger_101
+ - Himanshu Pandya
+ - Aayush Patil
 
 **Backend**
-- S!D
+ - xCalifier
+ - karpi
+ - S!D

@@ -1,7 +1,19 @@
 # GenZ_CodePad
-Idea: Speak to Code with advanced ML for auto code 
+Beta version. [[WARNING THERE WILL BE BUGS IN BETA]]
+
+Idea: Speak to Code with advanced ML for auto code. (Future IDE)
+
+Join our Discord for collaborating or for more information: https://discord.gg/nbKEZHqc
  
-## Contributers
+**Roadmap!**
+========
+ - Speech to Code
+ - Code Completion
+ - Highliting
+ - Integrated Console
+ - XML themes
+ 
+## Contributors
 **Frontend**
  - Rohit Saini
  - Cerberus

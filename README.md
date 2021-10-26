@@ -11,3 +11,10 @@ DM me on Discord for information: hax0rslayer#0577
 
 **Backend**
 - S!D
+
+Official Roadmap =
+Speech to Code
+Code Completion
+Highliting
+Integrated Console
+XML themes

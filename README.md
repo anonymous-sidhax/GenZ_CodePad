@@ -1,9 +1,17 @@
 # GenZ_CodePad
 Beta version. [[WARNING THERE WILL BE BUGS IN BETA]]
 
-Future IDE. Go to roadmap.md to see our roadmap.
+Idea: Speak to Code with advanced ML for auto code. (Future IDE)
 
-DM me on Discord for information: hax0rslayer#0577
+Join our Discord for collaborating or for more information: https://discord.gg/nbKEZHqc
+ 
+**Roadmap!**
+========
+ - Speech to Code
+ - Code Completion
+ - Highliting
+ - Integrated Console
+ - XML themes
  
 ## Contributors
 **Frontend**
@@ -14,15 +22,6 @@ DM me on Discord for information: hax0rslayer#0577
  - Aayush Patil
 
 **Backend**
-=======
  - xCalifier
  - karpi
  - S!D
-
-**Roadmap!:**
-========
-Speech to Code
-Code Completion
-Highliting
-Integrated Console
-XML themes

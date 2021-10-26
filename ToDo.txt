@@ -1,4 +1,7 @@
-
+ToDo:
+  [ ] Create text area for writing Code.
+  [ ] All upload changes in discord channel.  (S!D)
+  [ ] Dropdown menu for File, Edit, Help, About Us
 
 
 
@@ -11,3 +14,10 @@ Name suggestions for The IDE:
   - Zen Codepad 
   - Jarvis IDE
   - GenZ CODEPAD
+
+
+Future Features:
+  - highlighting
+  - auto complete
+  - go to definition
+  - documentation on hover/double click

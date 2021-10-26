@@ -7,12 +7,20 @@ DM me on Discord for information: hax0rslayer#0577
  
 ## Contributors
 **Frontend**
-- Rohit Saini
+ - Rohit Saini
+ - Cerberus
+ - Ravenger_101
+ - Himanshu Pandya
+ - Aayush Patil
 
 **Backend**
-- S!D
+=======
+ - xCalifier
+ - karpi
+ - S!D
 
-Official Roadmap =
+**Roadmap!:**
+========
 Speech to Code
 Code Completion
 Highliting

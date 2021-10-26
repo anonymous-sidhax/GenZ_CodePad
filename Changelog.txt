@@ -1,4 +1,7 @@
 25th October 2021
-  - Initial Commit (S!D)
-  - Heroku Deployment (S!D)
+  - Initial Commit (anonymous-sidhax)
+  - Heroku Deployment (anonymous-sidhax)
   
+26th October 2021
+  - Added webhooks for discord notifications (anonymous-sidhax)
+  - Added Login Page (Cerberus240)

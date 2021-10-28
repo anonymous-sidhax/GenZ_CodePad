@@ -1,7 +1,8 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="style1.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Login Form Using HTML And CSS Only</title>
 </head>
@@ -17,7 +18,7 @@
 				<span>or use your account</span>
 				<input type="email" placeholder="Email" />
 				<input type="password" placeholder="Password" />
-				<a href="#">Forgot your password?</a>
+				<a href="{% url 'forget_password' %}">Forgot your password?</a>
 				<button>Log In</button>
 			</form>
 		</div>

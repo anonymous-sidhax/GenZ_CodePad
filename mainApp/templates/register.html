@@ -1,10 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="style3.css">
-<title> Registration form </title>
-</head>
-<body>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+    <title> Registration form </title>
+  </head>
   <body>
     <div class="login-page">
       <div class="form">
@@ -14,15 +14,15 @@
             <p>Please enter your credentials to login.</p>
           </div>
         </div>
-        <form class="login-form">
+        <form method="post" class="login-form">
+          {% csrf_token %}
           <input type="text" placeholder="username"/>
           <input type="password" placeholder="password"/>
-		  <input type="password" placeholder="password"/>
-          <button>Register</button>
-          <p class="message"> Have an account <a href="CODEPAD.html">Login </a></p>
+		      <input type="password" placeholder="password"/>
+          <button type="submit">Register</button>
+          <p class="message"> Have an account <a href="{% url 'login' %}">Login </a></p>
         </form>
       </div>
-    </div>
-</body>
-</body>
+    </div>    
+  </body>
 </html>

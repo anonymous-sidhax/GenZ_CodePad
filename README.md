@@ -17,15 +17,13 @@ Join our Discord for collaborating or for more information: https://discord.gg/n
 **Frontend**
  - Rohit Saini
  - Cerberus
- - Ravenger_101
- - Himanshu Pandya
  - Aayush Patil
 
 **Backend**
  - xCalifier
  - karpi
  - S!D
- - 
+ 
 Deployment : https://genz-codepad.herokuapp.com/
 
 Contact Us : genz.2021.py@gmail.com

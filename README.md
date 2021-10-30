@@ -25,3 +25,6 @@ Join our Discord for collaborating or for more information: https://discord.gg/n
  - xCalifier
  - karpi
  - S!D
+ - 
+Deployment : https://genz-codepad.herokuapp.com/
+Contact Us : genz.2021.py@gmail.com

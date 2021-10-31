@@ -2,5 +2,5 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-def homePageView(request):
+def index(request):
     return render(request, "index.html")

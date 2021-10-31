@@ -4,8 +4,12 @@ venv/
 env/
 *.sqlite3
 .idea/
-# Project asset folders
 
+# Pipfiles
+Pipfile
+Pipfile.lock
+
+# Project asset folders
 media/
 
 # Database

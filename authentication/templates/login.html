@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 {% load static %}
 <html>
@@ -18,7 +19,7 @@
 				<span>or use your account</span>
 				<input type="email" placeholder="Email" />
 				<input type="password" placeholder="Password" />
-				<a href="#">Forgot your password?</a>
+				<a href="{% url 'forget_password' %}">Forgot your password?</a>
 				<button>Log In</button>
 			</form>
 		</div>

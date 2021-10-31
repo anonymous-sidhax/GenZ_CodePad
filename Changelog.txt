@@ -5,3 +5,8 @@
 26th October 2021
   - Added webhooks for discord notifications (anonymous-sidhax)
   - Added Login Page (Cerberus240)
+  - Added Register Page (Cerberus240)
+  - Added Forget Password Page (Cerberus240)
+  
+27th October 2021
+  

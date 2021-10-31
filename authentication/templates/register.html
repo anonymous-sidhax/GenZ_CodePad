@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register-style.css' %}">
+    <title> Registration form </title>
+  </head>
+  <body>
+    <div class="login-page">
+      <div class="form">
+        <div class="login">
+          <div class="login-header">
+            <h3>REGISTER</h3>
+            <p>Please enter your credentials to login.</p>
+          </div>
+        </div>
+        <form method="post" class="login-form">
+          {% csrf_token %}
+          <input type="text" placeholder="username"/>
+          <input type="password" placeholder="password"/>
+		      <input type="password" placeholder="password"/>
+          <button type="submit">Register</button>
+          <p class="message"> Have an account <a href="{% url 'login' %}">Login </a></p>
+        </form>
+      </div>
+    </div>    
+  </body>
+</html>

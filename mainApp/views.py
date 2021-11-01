@@ -28,3 +28,6 @@ def register(request):
 
 def forget_password(request):
     return render(request, "forget_password.html")
+
+def AboutUs(request):
+    return render(request, "AboutUs.html")

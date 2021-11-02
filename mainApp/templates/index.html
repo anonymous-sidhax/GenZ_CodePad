@@ -1,12 +1,30 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
+        <link rel="stylesheet" href="{% static 'css/home-style.css' %}">
         <title>
-            Homepage
+            GenZ CodePad
         </title>
     </head>
     <body>
-        <h1> Test Heroku Page</h1>
-        <a href="{% url 'AboutUs' %}">About Us</a>
+        <nav>
+           <h2 class="nav-logo">GenZ CodePad</h2>
+           <div class="nav-button-section">
+                <button>
+                    <a style="color: black;" class="navbar-urls" href="{% url 'login' %}">Login</a>
+                </button>
+                <button>
+                    <a class="navbar-urls" href="{% url 'register' %}">Register</a>
+                </button>
+                <button>
+                    <a style="color: black;" class="navbar-urls" href="{% url 'about_us' %}">About US</a>
+                </button>
+           </div>
+       </nav>           
+
+       <textarea>
+       </textarea>
+       <nav>
     </body>
 </html>

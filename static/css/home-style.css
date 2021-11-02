@@ -1,0 +1,44 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    box-sizing: border-box;
+}
+
+nav {
+    height: 7vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1a2332!important;
+}
+
+.nav-logo {
+    color: white;
+}
+
+.nav-button-section > button {
+    border: none;
+    padding: 8px 14px;
+    margin: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+a.navbar-urls {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-button-section > button:nth-child(1) {
+    background: chartreuse;
+}
+
+.nav-button-section > button:nth-child(2) {
+    background: #182233;
+}
+

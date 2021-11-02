@@ -18,3 +18,7 @@ db.sqlite3
 __pycache__/
 *.py[cod]
 *$py.class
+
+#vscode
+.vscode
+*.mp3

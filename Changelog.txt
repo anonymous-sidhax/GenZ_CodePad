@@ -8,5 +8,14 @@
   - Added Register Page (Cerberus240)
   - Added Forget Password Page (Cerberus240)
   
-27th October 2021
+28th October 2021
+  - Speech To Text FUnctionality (@git-hub0101)
+ 
+30th October 2021
+  - Travic CI for py (anonymous-sidhax)
+  - Created homepage (Aayushpatil77)
+  - Moved login, register to Authentication App (Aayushpatil77)
+
+1st November 2021
+  - Created About Us Page (TheInspiredConjurer) 
   

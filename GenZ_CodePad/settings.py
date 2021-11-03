@@ -26,6 +26,9 @@ SECRET_KEY = 'django-insecure-0pv98%5=o%+tv7hf@e6@*6&$sln3y*@&_681hza876_nw*52sw
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+#DEBUG_PROPAGATE_EXCEPTIONS = True
+#COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+#python manage.py collectstatic
 
 ALLOWED_HOSTS = ['genz-codepad.herokuapp.com', '127.0.0.1'  ]
 
@@ -125,7 +128,9 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),

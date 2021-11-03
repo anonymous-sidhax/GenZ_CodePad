@@ -26,3 +26,6 @@ __pycache__/
 #vscode
 .vscode
 *.mp3
+
+#staticfiles django
+staticfiles

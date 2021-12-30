@@ -47,3 +47,13 @@ a.navbar-urls {
     width: 80%;
     height: 80vh;
 }
+
+/* For TextArea - Output */
+.code_output{
+    width: 80%;
+}
+
+/* For Button - Run Code */
+.code_run{
+    
+}

@@ -6,6 +6,12 @@
         <title>
             GenZ CodePad
         </title>
+
+        <!-- Required meta tags for other devices-->
+        {% comment %} <meta charset="utf-8"> {% endcomment %}
+        {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% endcomment %}
+        
+
     </head>
     <body>
         <nav>
@@ -21,12 +27,26 @@
                     <a style="color: black;" class="navbar-urls" href="{% url 'AboutUs' %}">About US</a>
                 </button>
            </div>
-        </nav>           
+        </nav>  
+        
 
-        <textarea class="code_editor">
+        <form action="/runcode" method="post">
+            {% csrf_token %}
 
-            {{code}}
-        </textarea>
+            <div class="codearea">  
+                <label for="codearea">Code Area</label><br>
+                <textarea class="code_editor" name="codearea" placeholder="Start coding from here..." >{{code}}</textarea>
+            </div>
+
+            <div class="codeoutput">  
+                <label for="codeoutput">Output</label><br>
+                <textarea class="code_output" name="codeoutput" rows="6" disabled>{{output}}</textarea>
+            </div>
             
+            <button type="submit" class="code_run">Submit</button
+
+        </form>
+        
+
     </body>
 </html>

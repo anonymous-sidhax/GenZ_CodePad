@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Fira Code";
+    src: url("../FiraCode-Regular.ttf");
+}
+
 *, *::after, *::before {
     margin: 0;
     padding: 0;
@@ -42,10 +47,31 @@ a.navbar-urls {
     background: #182233;
 }
 
+/* Code editor controls */
+.controls {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.controls * {
+    margin-left: 5px;
+}
+
+.controls button {
+    background-color: white;
+    border: 1px solid black;
+    padding: 2px 5px 2px 5px;
+
+}
+
 /* For TextArea - Code Editor */
 .code_editor{
     width: 80%;
+    resize: none;
     height: 80vh;
+    padding: 5px;
+    font-family: "Fira Code", sans-serif;
 }
 
 /* For TextArea - Output */
@@ -56,4 +82,10 @@ a.navbar-urls {
 /* For Button - Run Code */
 .code_run{
     
+}
+
+.codearea {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
 }

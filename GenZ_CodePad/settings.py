@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0pv98%5=o%+tv7hf@e6@*6&$sln3y*@&_681hza876_nw*52sw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 #DEBUG_PROPAGATE_EXCEPTIONS = True
 #COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 #python manage.py collectstatic

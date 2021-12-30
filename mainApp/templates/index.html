@@ -6,7 +6,7 @@
         <title>
             GenZ CodePad
         </title>
-
+        
         <!-- Required meta tags for other devices-->
         {% comment %} <meta charset="utf-8"> {% endcomment %}
         {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% endcomment %}
@@ -28,25 +28,40 @@
                 </button>
            </div>
         </nav>  
-        
 
+        <div class="controls">
+            <button>Output</button>
+            <select name="lang" id="">
+                <option value="cpp">C++</option>
+                <option value="c">C</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="js">Js</option>
+            </select>
+        </div>
+        
+        
+        <!-- <button type="submit" class="code_run">Submit</button>  -->
         <form action="/runcode" method="post">
             {% csrf_token %}
-
             <div class="codearea">  
-                <label for="codearea">Code Area</label><br>
-                <textarea class="code_editor" name="codearea" placeholder="Start coding from here..." >{{code}}</textarea>
+                <textarea class="code_editor" name="codearea" placeholder="" >
+{% if code %}
+{{code}}
+{% else %}
+#include <iostream>
+using namespace std;
+                    
+int main() {
+    return 0;
+}
+{% endif %}
+                </textarea>
             </div>
-
-            <div class="codeoutput">  
-                <label for="codeoutput">Output</label><br>
-                <textarea class="code_output" name="codeoutput" rows="6" disabled>{{output}}</textarea>
-            </div>
-            
-            <button type="submit" class="code_run">Submit</button
-
         </form>
-        
-
+        <div class="codeoutput">  
+            <label for="codeoutput">Output</label><br>
+            <textarea class="code_output" name="codeoutput" rows="6" disabled>{{output}}</textarea>
+        </div>
     </body>
 </html>

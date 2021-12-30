@@ -42,3 +42,8 @@ a.navbar-urls {
     background: #182233;
 }
 
+/* For TextArea - Code Editor */
+.code_editor{
+    width: 80%;
+    height: 80vh;
+}

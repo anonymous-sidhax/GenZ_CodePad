@@ -32,11 +32,11 @@
         <div class="controls">
             <button>Output</button>
             <select name="lang" id="">
-                <option value="cpp">Python</option>
+                <option value="cpp">Python3</option>
                 <option value="c">C</option>
                 <option value="python">C++</option>
                 <option value="java">Java</option>
-                <option value="js">Js</option>
+                <option value="js">JavaScript</option>
             </select>
         </div>
         
@@ -66,10 +66,10 @@ print(f'Sum of {a} and {b} is {sum(a, b)}')
             </div>
             <button type="submit" class="code_run">Submit</button>
         </form>
-        <div class="codeoutput">
-            <!-- <label for="codeoutput">Output</label><br> -->
-            <textarea class="code_output" name="codeoutput" disabled>{{output}}</textarea>
-        </div>
+        <form action="/sst" method="post">
+            {% csrf_token %}
+            <button type="submit">Enable Speech to Text</button>
+        </form>
 
     </body>
 </html>

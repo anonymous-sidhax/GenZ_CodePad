@@ -49,9 +49,12 @@ a.navbar-urls {
 
 /* Code editor controls */
 .controls {
-    display: flex;
+    display: block;
+    width: 80%;
+    text-align: right;
+    margin: auto;
     margin-top: 50px;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .controls * {
@@ -75,8 +78,18 @@ a.navbar-urls {
 }
 
 /* For TextArea - Output */
-.code_output{
+.codeoutput{
+    width: 100%;
+    margin: auto;
+}
+
+.code_output {
     width: 80%;
+    height: 20vh;
+    margin: auto;
+    margin-top: 10px;
+    display: block;
+    resize: none;
 }
 
 /* For Button - Run Code */

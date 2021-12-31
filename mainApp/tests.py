@@ -16,7 +16,7 @@ class AnalyzeTextToCode:
         return script_code
 
 class SpeechToTextEngine:
-    
+
     def recognize_voice():
         mic = sr.Microphone()
         recognize  = sr.Recognizer()

@@ -10,7 +10,11 @@
         <!-- Required meta tags for other devices-->
         {% comment %} <meta charset="utf-8"> {% endcomment %}
         {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% endcomment %}
-        
+        <script>
+            window.onload = function(){
+                document.getElementById('clickButton').click();
+            }
+        </script>
 
     </head>
     <body>
@@ -65,6 +69,11 @@ print(f'Sum of {a} and {b} is {sum(a, b)}')
                 <textarea class="code_output" name="codeoutput" rows="6" disabled>{{output}}</textarea>
             </div>
             <button type="submit" class="code_run">Submit</button>
+        </form>
+        
+        <form action="/sst" method="post">
+            {% csrf_token %}
+            <button type="submit">Enable Speech to Text</button>
         </form>
     </body>
 </html>

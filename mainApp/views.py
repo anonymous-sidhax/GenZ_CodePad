@@ -18,7 +18,7 @@ def about_us(request):
 def sst(request):
     print("Inside FUnction")
     return render(request, "about_us.html")
-    
+  
 def runcode(request):
 
     if request.method == "POST":

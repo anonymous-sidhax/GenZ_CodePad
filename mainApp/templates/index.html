@@ -32,9 +32,9 @@
         <div class="controls">
             <button>Output</button>
             <select name="lang" id="">
-                <option value="cpp">C++</option>
+                <option value="cpp">Python</option>
                 <option value="c">C</option>
-                <option value="python">Python</option>
+                <option value="python">C++</option>
                 <option value="java">Java</option>
                 <option value="js">Js</option>
             </select>
@@ -46,22 +46,30 @@
             {% csrf_token %}
             <div class="codearea">  
                 <textarea class="code_editor" name="codearea" placeholder="" >
-{% if code %}
-{{code}}
-{% else %}
-#include <iostream>
-using namespace std;
-                    
-int main() {
-    return 0;
-}
-{% endif %}
+{% if code %}{{code}}
+{% else %}# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+
+def sum(a, b):
+    return (a + b)
+
+a = 10
+b = 20
+
+print(f'Sum of {a} and {b} is {sum(a, b)}')
+                    {% endif %}
                 </textarea>
             </div>
+            <div class="codeoutput">  
+                <label for="codeoutput">Output</label><br>
+                <textarea class="code_output" name="codeoutput" rows="6" disabled>{{output}}</textarea>
+            </div>
+            <button type="submit" class="code_run">Submit</button>
         </form>
         <div class="codeoutput">
             <!-- <label for="codeoutput">Output</label><br> -->
             <textarea class="code_output" name="codeoutput" disabled>{{output}}</textarea>
         </div>
+
     </body>
 </html>

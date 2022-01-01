@@ -1,18 +1,65 @@
 import speech_recognition as sr
+from word2number import w2n
 
 keywords = {
-    "delete" : "delete_line"
+    "delete all" : "delete_all",
+    "delete line" : "delete_line",
+    "delete" : "delete",
+    "new line" : "new_line"
 }
 
-class AnalyzeTextToCode:
-    def analyze(speech):
-        if speech in keywords.keys():
-            return getattr(AnalyzeTextToCode, keywords[speech])(script_code)
+# number_map = {
+#     "zero" : 0,
+#     "one" : 1,
+#     "two" : 2,
+#     "three" : 3,
+#     "four" : 4,
+#     "five" : 5,
+#     "six" : 6,
+#     "seven" : 7,
+#     "eight" : 8,
+#     "nine" : 9,
+# }
 
-    def delete_line(script_code):
-        position_of_next_line = script_code.rfind('\n')
-        if (position_of_next_line > 0):
-            script_code = script_code[ : position_of_next_line] + "\n"
+class AnalyzeTextToCode:
+    def analyze(script_code, speech):
+        for keyword in keywords.keys():
+            if keyword in speech:
+                return getattr(AnalyzeTextToCode, keywords[keyword])(script_code, speech)
+
+    def delete_line(script_code, speech):
+        if "number" in speech:
+            position_of_text_number = speech.rfind('number') + len("number") + 1
+            try:
+                if type(int(speech[position_of_text_number])) == int:
+                    line_number = int(speech[position_of_text_number])
+            except:
+                number_in_text = speech[position_of_text_number : ]
+                #line_number = number_map[number_in_text]
+                line_number = w2n.word_to_num(number_in_text)
+            script_code = script_code.split("\n")
+            if len(script_code) < line_number:
+                print("Error: Line Number to delete exceeds the total lines in code.")
+            else:
+                script_code.pop(line_number-1)
+            return "\n".join(script_code)
+        else:
+
+            position_of_next_line = script_code.rfind('\n')
+            if (position_of_next_line > 0):
+                script_code = script_code[ : position_of_next_line] + "\n"
+            return script_code
+    
+    def delete_all(script_code, speech):
+        script_code = ""
+        return script_code
+    
+    def delete(script_code, speech):
+        script_code = script_code[ : len(script_code)-1]
+        return script_code
+
+    def new_line(script_code, speech):
+        script_code = script_code + '\n'
         return script_code
 
 class SpeechToTextEngine:
@@ -29,6 +76,7 @@ class SpeechToTextEngine:
             try:
                 transcript = recognize.recognize_google(audio)
                 print (transcript)
+                return transcript
                 #logging.info(transcript)
             except sr.RequestError:
                 print ('API Error')
@@ -38,9 +86,21 @@ class SpeechToTextEngine:
                 print ('Looks like you are smarter than the Computer.!!! 🧠')
                 continue  
 
-#SpeechToTextEngine.recognize_voice()
 
-script_code = "print(\"Hello World\")\nprint(\"Hello World\")\nprint(\"Hello World\")"
+
+#script_code = "print(\"Hello World1\")\nprint(\"Hello World2\")\nprint(\"Hello World3\")\nprint(\"Hello World4\")\nprint(\"Hello World5\")\nprint(\"Hello World6\")"
+with open('input.txt','r') as file:
+    script_code = file.read()
+print (script_code)
+#speech = SpeechToTextEngine.recognize_voice()
 speech = "delete"
 
-print(AnalyzeTextToCode.analyze(speech))
+print(AnalyzeTextToCode.analyze(script_code, speech))
+output = AnalyzeTextToCode.analyze(script_code, speech)
+with open('input.txt','w') as file:
+    file.write(output)
+
+
+with open('input.txt','r') as f:
+    line = f.readline()
+    print (line)

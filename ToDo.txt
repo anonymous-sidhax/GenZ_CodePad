@@ -1,19 +1,25 @@
-ToDo:
-  [ ] Create text area for writing Code.
-  [ ] All upload changes in discord channel.  (S!D)
-  [ ] Dropdown menu for File, Edit, Help, About Us
+ToDo Backend:
+  [ ] from word2number import w2n in requirements.txt
+  [ ] Combine delete(), delete_all(), delete_line() in one i.e. delete(). Kepp if else logic inside delete().
+  [ ] Use tuple to analyze() - I really think a dict would be counterproductive for this, I’d go for keywords = ((“delete all”, delete_all), (“delete line”, delete_line), …)
+  And check if speech.startswith(keyword).
+  [ ] Snore, Wake Up Command.
+  [ ] Multiple words phrase hello there (all lowercase), sentence hello there (capitalizes first)
+  [ ] word something (types full word in lowercase)
+  [ ] Basic editing slap (newline), scratch (backspace), act (escape), slap three, etc
+  [ ] act colon single-quote double-quote equal space tab bang hash dollar percent carrot ampersand star late rate minus underscore plus backslash dot slash question
+  [ ] read new file : with open('', 'r') as f: data = f.read()
+  [ ] .strip() . split()    (Split New Line) = split("\n")
+  [ ] go right, up, left, down
+  [ ] for loop, while loop
+  [ ] beginning or end of line - meg stands for "move to beginning", mel stands for "move end of line"
+  [ ] Moving the cursor left and right across word boundaries - law and raw stand for "left a word", "right a word"
+  [ ] Enable Python/Java/C
 
-
-
-
-
-Name suggestions for The IDE:
-  - Spark For Python - Advanced IDE
-  - Dex Codepad
-  - TERRIBLE IDE
-  - Zen Codepad 
-  - Jarvis IDE
-  - GenZ CODEPAD
+ToDo Frontend:
+  [ ] Move all fonts to static/fonts folder.
+  [ ] Create base.html with navbar and footer.
+  [ ] Auto Refresh only textarea based on speech (Ajax/JS)
 
 
 Future Features:
@@ -21,3 +27,6 @@ Future Features:
   - auto complete
   - go to definition
   - documentation on hover/double click
+
+
+https://docs.google.com/document/d/e/2PACX-1vSGRicRTJ2iv7rzLnwYxGnUb39usUk_5o2KPxJ5YE91qv-W_lWHD1C7S4syAHM61VAheR5lQ6hoE55W/pub#h.msq2mfk3v13y  

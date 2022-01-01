@@ -27,15 +27,18 @@ class AnalyzeTextToCode:
 
     def delete_line(script_code, speech):
         if "number" in speech:
-            position_of_number = speech.rfind('number') + len("number") + 1
+            position_of_text_number = speech.rfind('number') + len("number") + 1
             try:
-                if type(int(speech[position_of_number])) == int:
-                    line_number = int(speech[position_of_number])
+                if type(int(speech[position_of_text_number])) == int:
+                    line_number = int(speech[position_of_text_number])
             except:
-                number_in_text = speech[position_of_number : ]
+                number_in_text = speech[position_of_text_number : ]
                 line_number = number_map[number_in_text]
             script_code = script_code.split("\n")
-            script_code.pop(line_number-1)
+            if len(script_code) < line_number:
+                print("Error: Line Number to delete exceeds the total lines in code.")
+            else:
+                script_code.pop(line_number-1)
             return "\n".join(script_code)
         else:
             position_of_next_line = script_code.rfind('\n')

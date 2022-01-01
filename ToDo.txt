@@ -1,12 +1,13 @@
 ToDo Backend:
   [ ] Handle line number in delete_line() if it exceeds the line numbers in script.
-  [ ] Move alphabet_to_number() to Utils Class / Folder
+  [ ] Move alphabet_to_number() to Utils Class / Folder.
+  [ ] Combine delete(), delete_all(), delete_line() in one i.e. delete(). Kepp if else logic inside delete().
   [ ] Use tuple to analyze() - I really think a dict would be counterproductive for this, I’d go for keywords = ((“delete all”, delete_all), (“delete line”, delete_line), …)
-  And check if speech.startswith(keyword)
+  And check if speech.startswith(keyword).
 
 ToDo Frontend:
-  [ ] Move all fonts to static/fonts folder
-  [ ] 
+  [ ] Move all fonts to static/fonts folder.
+  [ ] Create base.html with navbar and footer.
   [ ] 
 
 

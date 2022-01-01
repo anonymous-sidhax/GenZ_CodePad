@@ -1,10 +1,13 @@
-ToDo:
-  [ ] Create text area for writing Code.
-  [ ] All upload changes in discord channel.  (S!D)
-  [ ] Dropdown menu for File, Edit, Help, About Us
+ToDo Backend:
+  [ ] Handle line number in delete_line() if it exceeds the line numbers in script.
+  [ ] Move alphabet_to_number() to Utils Class / Folder
+  [ ] Use tuple to analyze() - I really think a dict would be counterproductive for this, I’d go for keywords = ((“delete all”, delete_all), (“delete line”, delete_line), …)
+  And check if speech.startswith(keyword)
 
-
-
+ToDo Frontend:
+  [ ] Move all fonts to static/fonts folder
+  [ ] 
+  [ ] 
 
 
 Name suggestions for The IDE:

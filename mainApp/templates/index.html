@@ -1,56 +1,57 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
-    <head>
-        <link rel="stylesheet" href="{% static 'css/home-style.css' %}">
-        <link rel="stylesheet" href="{% static 'css/prism.css' %}">
-        <title>
-            GenZ CodePad
-        </title>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/home-style.css' %}" />
+    <title>GenZ CodePad</title>
 
-        <!-- Required meta tags for other devices-->
-        {% comment %} <meta charset="utf-8"> {% endcomment %}
-        {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% endcomment %}
-        <script>
-            window.onload = function(){
-                document.getElementById('clickButton').click();
-            }
-        </script>
+    <!-- Required meta tags for other devices-->
+    {% comment %}
+    <meta charset="utf-8" />
+    {% endcomment %} {% comment %}
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    {% endcomment %}
+  </head>
+  <body>
+    <nav>
+      <h2 class="nav-logo">GenZ CodePad</h2>
+      <div class="nav-button-section">
+        <button>
+          <a style="color: black" class="navbar-urls" href="{% url 'login' %}"
+            >Login</a
+          >
+        </button>
+        <button>
+          <a class="navbar-urls" href="{% url 'register' %}">Register</a>
+        </button>
+        <button>
+          <a style="color: black" class="navbar-urls" href="{% url 'AboutUs' %}"
+            >About US</a
+          >
+        </button>
+      </div>
+    </nav>
 
-    </head>
-    <body>
-        <nav>
-           <h2 class="nav-logo">GenZ CodePad</h2>
-           <div class="nav-button-section">
-                <button>
-                    <a style="color: black;" class="navbar-urls" href="{% url 'login' %}">Login</a>
-                </button>
-                <button>
-                    <a class="navbar-urls" href="{% url 'register' %}">Register</a>
-                </button>
-                <button>
-                    <a style="color: black;" class="navbar-urls" href="{% url 'AboutUs' %}">About US</a>
-                </button>
-           </div>
-        </nav>  
+    <div class="controls">
+      <button>Run</button>
+      <button id="resume">Resume</button>
+      <select name="lang" id="">
+        <option value="cpp">Python3</option>
+        <option value="c">C</option>
+        <option value="python">C++</option>
+        <option value="java">Java</option>
+        <option value="js">JavaScript</option>
+      </select>
+    </div>
 
-        <div class="controls">
-            <button>Run</button>
-            <select name="lang" id="">
-                <option value="cpp">Python3</option>
-                <option value="c">C</option>
-                <option value="python">C++</option>
-                <option value="java">Java</option>
-                <option value="js">JavaScript</option>
-            </select>
-        </div>
-        
-        
-        <!-- <button type="submit" class="code_run">Submit</button>  -->
-        <form action="/process_speech" method="post">
-            {% csrf_token %}
-            <div class="codearea">
-                <textarea class="code_editor" name="codearea" placeholder="" >
+    <!-- <button type="submit" class="code_run">Submit</button>  -->
+    <form action="/process_speech" method="post">
+      {% csrf_token %}
+      <div class="codearea">
+        <textarea class="code_editor" name="codearea" placeholder="">
 {% if code %}{{code}}
 {% else %}# Online Python compiler (interpreter) to run Python online.
 # Write Python 3 code in this online editor and run it.
@@ -61,19 +62,135 @@ def sum(a, b):
 a = 10
 b = 20
 
-print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}</textarea>
-            </div>
-            <div class="codeoutput">  
-                <label for="codeoutput">Output</label><br>
-                <textarea class="code_output" name="codeoutput" rows="6" disabled>{{output}}</textarea>
-            </div>
-            <button type="submit" class="code_run">Submit</button>
-        </form>
+print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}</textarea
+        >
+      </div>
+      <div class="codeoutput">
+        <label for="codeoutput">Output</label><br />
+        <textarea class="code_output" name="codeoutput" rows="6" disabled>
+{{output}}</textarea
+        >
+      </div>
+      <button type="submit" class="code_run">Submit</button>
+    </form>
 
-        <form action="/process_speech" method="post">
-            {% csrf_token %}
-            <button type="submit">Enable Speech to Text</button>
-        </form>
-    </body>
-    <script src="{% static 'js/prism.js' %}"></script>
+    <form action="/process_speech" method="post">
+      {% csrf_token %}
+      <button type="submit">Enable Speech to Text</button>
+    </form>
+  </body>
+  <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+  <script>
+    URL = window.URL || window.webkitURL;
+    var gumStream;
+    //stream from getUserMedia()
+    var rec;
+    //Recorder.js object
+    var input;
+    //MediaStreamAudioSourceNode we'll be recording
+    // shim for AudioContext when it's not avb.
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    var audioContext = new AudioContext();
+    const csrftoken = getCookie("csrftoken");
+
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === name + "=") {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+
+    function startRecording() {
+      /* Simple constraints object, for more advanced audio features see
+
+https://addpipe.com/blog/audio-constraints-getusermedia/ */
+
+      var constraints = {
+        audio: true,
+        video: false,
+      };
+
+      /* We're using the standard promise based getUserMedia()
+
+https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia */
+
+      navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(function (stream) {
+          console.log(
+            "getUserMedia() success, stream created, initializing Recorder.js ..."
+          );
+          /* assign to gumStream for later use */
+          gumStream = stream;
+          /* use the stream */
+          input = audioContext.createMediaStreamSource(stream);
+          /* Create the Recorder object and configure to record mono sound (1 channel) Recording 2 channels will double the file size */
+          rec = new Recorder(input, {
+            numChannels: 1,
+          });
+          //start the recording process
+          rec.record();
+          return rec;
+        })
+        .catch(function (err) {
+          //enable the record button if getUserMedia() fails
+          recordButton.disabled = false;
+          stopButton.disabled = true;
+          pauseButton.disabled = true;
+        });
+    }
+
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    function sendAudioToServer(blob) {
+      var filename = new Date().toISOString();
+      //filename to send to server without extension
+      //upload link
+      const request = new Request("{% url 'process_speech' %}", {
+        method: "POST",
+        headers: { "X-CSRFToken": csrftoken },
+        mode: "same-origin",
+        body: { blob: blob },
+      });
+      fetch(request).then(function (response) {});
+    }
+
+    window.onload = (event) => {
+      const rr = startRecording();
+      sleep(2);
+      document.querySelector("button#resume").addEventListener("click", () => {
+        audioContext.resume().then(() => {
+          console.log("Playback resumed successfully");
+        });
+      });
+      function somePromise() {
+        return new Promise((res, rej) => {
+          setTimeout(() => mainloop(), 250);
+        });
+      }
+    //   somePromise();
+      const mainloop = async () => {
+        while (true) {
+          //   console.log(rr);
+          // rr.exportWAV(sendAudioToServer);
+          sleep(2);
+        }
+      };
+      
+    };
+
+    // li.appendChild(document.createTextNode(" ")); //add a space in between
+    // li.appendChild(upload); //add the upload link to li
+  </script>
 </html>

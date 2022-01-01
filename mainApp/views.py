@@ -18,10 +18,9 @@ def about_us(request):
     return render(request, "about_us.html")
 
 def process_speech(request):
-    processor = Processor()
+    if request.method == "POST":
+        print(request.POST['blob'])
 
-    while True:
-        processor.run(script_code = request.POST['codearea'])
   
 def runcode(request):
 

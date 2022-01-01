@@ -30,7 +30,7 @@ DEBUG = True
 #COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 #python manage.py collectstatic
 
-ALLOWED_HOSTS = ['genz-codepad.herokuapp.com', '127.0.0.1'  ]
+ALLOWED_HOSTS = ['genz-codepad.herokuapp.com', '127.0.0.1']
 
 
 # Application definition

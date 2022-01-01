@@ -46,7 +46,7 @@
         
         
         <!-- <button type="submit" class="code_run">Submit</button>  -->
-        <form action="/runcode" method="post">
+        <form action="/process_speech" method="post">
             {% csrf_token %}
             <div class="codearea">  
                 <textarea class="code_editor" name="codearea" placeholder="" >
@@ -60,8 +60,7 @@ def sum(a, b):
 a = 10
 b = 20
 
-print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}
-                </textarea>
+print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}</textarea>
             </div>
             <div class="codeoutput">  
                 <label for="codeoutput">Output</label><br>
@@ -70,7 +69,7 @@ print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}
             <button type="submit" class="code_run">Submit</button>
         </form>
 
-        <form action="/sst" method="post">
+        <form action="/process_speech" method="post">
             {% csrf_token %}
             <button type="submit">Enable Speech to Text</button>
         </form>

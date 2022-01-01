@@ -10,3 +10,4 @@ tornado==6.1
 watchdog==2.1.6
 websocket-client==1.2.1
 whitenoise==5.2.0
+speech_recognition

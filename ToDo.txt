@@ -1,4 +1,6 @@
 ToDo Backend:
+  [ ] from word2number import w2n
+  [ ] Delete input.txt from mainApp used for testing.
   [ ] Move alphabet_to_number() to Utils Class / Folder.
   [ ] Combine delete(), delete_all(), delete_line() in one i.e. delete(). Kepp if else logic inside delete().
   [ ] Use tuple to analyze() - I really think a dict would be counterproductive for this, I’d go for keywords = ((“delete all”, delete_all), (“delete line”, delete_line), …)
@@ -19,7 +21,7 @@ ToDo Backend:
 ToDo Frontend:
   [ ] Move all fonts to static/fonts folder.
   [ ] Create base.html with navbar and footer.
-  [ ] 
+  [ ] Auto Refresh only textarea based on speech (Ajax/JS)
 
 
 Future Features:

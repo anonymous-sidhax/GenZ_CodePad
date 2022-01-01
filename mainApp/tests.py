@@ -44,6 +44,7 @@ class AnalyzeTextToCode:
                 script_code.pop(line_number-1)
             return "\n".join(script_code)
         else:
+
             position_of_next_line = script_code.rfind('\n')
             if (position_of_next_line > 0):
                 script_code = script_code[ : position_of_next_line] + "\n"
@@ -87,8 +88,19 @@ class SpeechToTextEngine:
 
 
 
-script_code = "print(\"Hello World1\")\nprint(\"Hello World2\")\nprint(\"Hello World3\")\nprint(\"Hello World4\")\nprint(\"Hello World5\")\nprint(\"Hello World6\")"
+#script_code = "print(\"Hello World1\")\nprint(\"Hello World2\")\nprint(\"Hello World3\")\nprint(\"Hello World4\")\nprint(\"Hello World5\")\nprint(\"Hello World6\")"
+with open('input.txt','r') as file:
+    script_code = file.read()
+print (script_code)
 #speech = SpeechToTextEngine.recognize_voice()
-speech = "add new line"
+speech = "delete"
 
 print(AnalyzeTextToCode.analyze(script_code, speech))
+output = AnalyzeTextToCode.analyze(script_code, speech)
+with open('input.txt','w') as file:
+    file.write(output)
+
+
+with open('input.txt','r') as f:
+    line = f.readline()
+    print (line)

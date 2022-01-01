@@ -6,7 +6,7 @@
 *, *::after, *::before {
     margin: 0;
     padding: 0;
-    font-family: monospace;
+    font-family: "Fira Code";
     box-sizing: border-box;
 }
 
@@ -66,6 +66,12 @@ a.navbar-urls {
     border: 1px solid black;
     padding: 2px 5px 2px 5px;
 
+}
+
+.controls select[name="lang"] {
+    width: 100px;
+    outline: none;
+    border: 1px solid black;
 }
 
 /* For TextArea - Code Editor */

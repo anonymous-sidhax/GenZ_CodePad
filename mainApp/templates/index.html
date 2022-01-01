@@ -3,10 +3,11 @@
 <html>
     <head>
         <link rel="stylesheet" href="{% static 'css/home-style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/prism.css' %}">
         <title>
             GenZ CodePad
         </title>
-        
+
         <!-- Required meta tags for other devices-->
         {% comment %} <meta charset="utf-8"> {% endcomment %}
         {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% endcomment %}
@@ -30,7 +31,7 @@
         </nav>  
 
         <div class="controls">
-            <button>Output</button>
+            <button>Run</button>
             <select name="lang" id="">
                 <option value="cpp">C++</option>
                 <option value="c">C</option>
@@ -44,7 +45,7 @@
         <!-- <button type="submit" class="code_run">Submit</button>  -->
         <form action="/runcode" method="post">
             {% csrf_token %}
-            <div class="codearea">  
+            <div class="codearea">
                 <textarea class="code_editor" name="codearea" placeholder="" >
 {% if code %}
 {{code}}
@@ -64,4 +65,5 @@ int main() {
             <textarea class="code_output" name="codeoutput" disabled>{{output}}</textarea>
         </div>
     </body>
+    <script src="{% static 'js/prism.js' %}"></script>
 </html>

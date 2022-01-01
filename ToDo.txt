@@ -1,7 +1,5 @@
 ToDo Backend:
-  [ ] from word2number import w2n
-  [ ] Delete input.txt from mainApp used for testing.
-  [ ] Move alphabet_to_number() to Utils Class / Folder.
+  [ ] from word2number import w2n in requirements.txt
   [ ] Combine delete(), delete_all(), delete_line() in one i.e. delete(). Kepp if else logic inside delete().
   [ ] Use tuple to analyze() - I really think a dict would be counterproductive for this, I’d go for keywords = ((“delete all”, delete_all), (“delete line”, delete_line), …)
   And check if speech.startswith(keyword).

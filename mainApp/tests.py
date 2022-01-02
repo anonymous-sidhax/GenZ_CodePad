@@ -1,5 +1,6 @@
 import speech_recognition as sr
 from word2number import w2n
+from pydub import AudioSegment
 
 keywords = {
     "delete all" : "delete_all",

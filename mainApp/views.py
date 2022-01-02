@@ -4,7 +4,8 @@ from django.shortcuts import render
 #delete
 from django.http import HttpResponse
 import speech_recognition as sr
-#from pydub import AudioSegment
+from pydub import AudioSegment
+#delete
 
 from mainApp.core.processor import Processor
 import sys
@@ -79,15 +80,14 @@ def audio_test(request):
 
 def handleUploadFile(f):
       
-    with open('./file.ogg', "wb+") as destination:  
+    with open('./file.wav', "wb+") as destination:  
         for chunk in f.chunks():  
             destination.write(chunk)
 
     mic = sr.Microphone()
     recognize  = sr.Recognizer()
     
-
-    harvard = sr.AudioFile('./file.ogg')
+    harvard = sr.AudioFile('file.wav')
     with harvard as source:
         audio = recognize.record(source)   
 

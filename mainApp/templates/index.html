@@ -1,4 +1,3 @@
-<!--
 <!DOCTYPE html>
 {% load static %}
 <html>
@@ -76,8 +75,11 @@ print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}</textarea>
         </form>
     </body>
 </html>
--->
 
+
+
+
+<!--
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title></title>
@@ -108,7 +110,7 @@ print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}</textarea>
             }
 
             mediaRecorder.addEventListener("stop", () => {
-                const audioBlob = new Blob(audioChunks, { 'type': 'audio/webm;' });
+                const audioBlob = new Blob(audioChunks, { 'type': 'audio/ogg;' });
                 const audioUrl = URL.createObjectURL(audioBlob);
                 const audio = new Audio(audioUrl);
                 console.log(audioUrl);
@@ -152,7 +154,7 @@ print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}</textarea>
             function sendAudio(blob)
             {
                 let csrftoken = getCookie('csrftoken');
-                var webmFile = new File([ blob ], "audio.webm");      
+                var webmFile = new File([ blob ], "audio/ogg");      
                 var form    = new FormData();
                 form.append("myAudio", webmFile);
                 
@@ -189,3 +191,4 @@ print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}</textarea>
     
     </body>
 </html>
+-->

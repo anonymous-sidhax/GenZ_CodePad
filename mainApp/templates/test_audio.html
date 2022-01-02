@@ -1,0 +1,76 @@
+<html>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title></title>
+    
+    <script>
+        navigator.permissions.query({name:'microphone'}).then(function(result) {
+            if (result.state == 'granted') {
+                console.log("Granted");
+            } else if (result.state == 'prompt') {
+                console.log("Prompt");
+            }
+
+            // Don't do anything if the permission was denied.
+        });
+
+        navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+            const mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/wav' });
+            console.log("Recording Start");
+            mediaRecorder.start();
+
+            const audioChunks = [];
+
+            mediaRecorder.addEventListener("dataavailable", event => {
+                audioChunks.push(event.data);
+            });
+
+            mediaRecorder.addEventListener("stop", () => {
+                const audioBlob = new Blob(audioChunks);
+                const audioUrl = URL.createObjectURL(audioBlob);
+                const audio = new Audio(audioUrl);
+                sendData(audioBlob)
+                audio.play();
+            });
+
+            setTimeout(() => {
+                mediaRecorder.stop();
+                console.log("Recording Stopped");
+            }, 2000);
+
+            function sendData(data) 
+            {
+                let csrftoken = getCookie('csrftoken');
+                let response=fetch("/audio_test", {
+                method: "post",
+                body: data,
+                headers: { "X-CSRFToken": csrftoken },
+            })
+            
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+        }
+        });
+
+    </script>
+    
+    </head>
+    <body>
+        
+        
+    
+    </body>
+</html>

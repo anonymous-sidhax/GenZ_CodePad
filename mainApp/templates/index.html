@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
-  <head>
-    <link rel="stylesheet" href="{% static 'css/home-style.css' %}" />
-    <title>GenZ CodePad</title>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/home-style.css' %}">
+        <title>
+            GenZ CodePad
+        </title>
+        
+        
+        {% comment %} <meta charset="utf-8"> {% endcomment %}
+        {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% endcomment %}
+        <script>
+            window.onload = function(){
+                document.getElementById('clickButton').click();
+            }
+        </script>
 
     <!-- Required meta tags for other devices-->
     {% comment %}
@@ -35,23 +46,23 @@
       </div>
     </nav>
 
-    <div class="controls">
-      <button>Run</button>
-      <button id="resume">Resume</button>
-      <select name="lang" id="">
-        <option value="cpp">Python3</option>
-        <option value="c">C</option>
-        <option value="python">C++</option>
-        <option value="java">Java</option>
-        <option value="js">JavaScript</option>
-      </select>
-    </div>
-
-    <!-- <button type="submit" class="code_run">Submit</button>  -->
-    <form action="/process_speech" method="post">
-      {% csrf_token %}
-      <div class="codearea">
-        <textarea class="code_editor" name="codearea" placeholder="">
+        <div class="controls">
+            <button>Output</button>
+            <select name="lang" id="">
+                <option value="cpp">Python3</option>
+                <option value="c">C</option>
+                <option value="python">C++</option>
+                <option value="java">Java</option>
+                <option value="js">JavaScript</option>
+            </select>
+        </div>
+        
+        
+        
+        <form action="/process_speech" method="post">
+            {% csrf_token %}
+            <div class="codearea">  
+                <textarea class="code_editor" name="codearea" placeholder="" >
 {% if code %}{{code}}
 {% else %}# Online Python compiler (interpreter) to run Python online.
 # Write Python 3 code in this online editor and run it.
@@ -193,4 +204,87 @@ https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia */
     // li.appendChild(document.createTextNode(" ")); //add a space in between
     // li.appendChild(upload); //add the upload link to li
   </script>
+</html>
+-->
+
+<html>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title></title>
+    
+    <script>
+        
+        navigator.permissions.query({name:'microphone'}).then(function(result) {
+            if (result.state == 'granted') {
+                console.log("Granted");
+            } else if (result.state == 'prompt') {
+                console.log("Prompt");
+            }
+
+            // Don't do anything if the permission was denied.
+        });
+
+        navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+            const mediaRecorder = new MediaRecorder(stream);
+            console.log("Recording Start");
+            mediaRecorder.start();
+
+            const audioChunks = [];
+
+            mediaRecorder.addEventListener("dataavailable", event => {
+                audioChunks.push(event.data);
+            });
+
+            mediaRecorder.addEventListener("stop", () => {
+                const audioBlob = new Blob(audioChunks);
+                const audioUrl = URL.createObjectURL(audioBlob);
+                const audio = new Audio(audioUrl);
+                sendData(audioBlob);
+                console.log(typeof audioBlob);
+                console.log(audioBlob.text());
+                console.log(audioChunks);
+                console.log(typeof audioChunks);
+                audio.play();
+            });
+
+            setTimeout(() => {
+                mediaRecorder.stop();
+                console.log("Recording Stopped");
+            }, 2000);
+
+            function sendData(data) 
+            {
+                let csrftoken = getCookie('csrftoken');
+                let response=fetch("/audio_test", {
+                method: "post",
+                body: data,
+                headers: { "X-CSRFToken": csrftoken },
+            })
+            
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+        }
+        });
+
+    </script>
+    
+    </head>
+    <body>
+        
+        
+    
+    </body>
 </html>

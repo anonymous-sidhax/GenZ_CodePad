@@ -1,6 +1,10 @@
 from platform import processor
 from django.shortcuts import render
 
+#delete
+from django.http import HttpResponse
+
+
 from mainApp.core.processor import Processor
 import sys
 
@@ -49,3 +53,16 @@ def runcode(request):
 
     # Return and render index page and send codedata and output to show on page
     return render(request , 'index.html', {"code":code , "output":output})
+
+
+
+
+
+
+# Audio Test
+def audio_test(request):
+        print(type(request.body))
+        print(request.body)
+        #print (request.body.decode())
+        return HttpResponse('audio received')
+

@@ -3,10 +3,12 @@ from django.shortcuts import render
 
 #delete
 from django.http import HttpResponse
-
+import speech_recognition as sr
+#from pydub import AudioSegment
 
 from mainApp.core.processor import Processor
 import sys
+
 
 # def index(request):
 #     while(1):
@@ -62,8 +64,32 @@ def runcode(request):
 
 # Audio Test
 def audio_test(request):
-        print(type(request.body))
-        print(request.body)
-        #print (request.body.decode())
-        return HttpResponse('audio received')
+    if request.method == "POST":
+        if request.FILES.get("myAudio", False):
+            handleUploadFile(request.FILES["myAudio"])
+    return HttpResponse()
+    # print(request.data)
+    # print(type(request.data))
+    #f = open('./file.wav', 'wb')
+    #f.write(request.data)
+    #for key, value in request.POST.body():
+    #    print ("here")
+    #    print ("%s %s" % (key, value))
+    #return HttpResponse('audio received')
+
+def handleUploadFile(f):
+      
+    with open('./file.ogg', "wb+") as destination:  
+        for chunk in f.chunks():  
+            destination.write(chunk)
+
+    mic = sr.Microphone()
+    recognize  = sr.Recognizer()
+    
+
+    harvard = sr.AudioFile('./file.ogg')
+    with harvard as source:
+        audio = recognize.record(source)   
+
+    recognize.recognize_google(audio) 
 

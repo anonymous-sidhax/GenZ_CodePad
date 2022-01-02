@@ -81,7 +81,7 @@ print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}</textarea>
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title></title>
-    
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
         
         navigator.permissions.query({name:'microphone'}).then(function(result) {
@@ -96,23 +96,27 @@ print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}</textarea>
 
         navigator.mediaDevices.getUserMedia({ audio: true })
         .then(stream => {
-            const mediaRecorder = new MediaRecorder(stream);
+            var options = {mimeType: 'audio/webm'};
+            const mediaRecorder = new MediaRecorder(stream, options);
             console.log("Recording Start");
             mediaRecorder.start();
 
             const audioChunks = [];
 
-            mediaRecorder.addEventListener("dataavailable", event => {
+            mediaRecorder.ondataavailable = event => {
                 audioChunks.push(event.data);
-            });
+            }
 
             mediaRecorder.addEventListener("stop", () => {
-                const audioBlob = new Blob(audioChunks);
+                const audioBlob = new Blob(audioChunks, { 'type': 'audio/webm;' });
                 const audioUrl = URL.createObjectURL(audioBlob);
                 const audio = new Audio(audioUrl);
-                sendData(audioBlob);
+                console.log(audioUrl);
+                //sendAudioFile(audioBlob, audioUrl);
+                sendAudio(audioBlob);
+                //sendData(audioBlob);
                 console.log(typeof audioBlob);
-                console.log(audioBlob.text());
+                console.log(audioBlob);
                 console.log(audioChunks);
                 console.log(typeof audioChunks);
                 audio.play();
@@ -127,10 +131,37 @@ print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}</textarea>
             {
                 let csrftoken = getCookie('csrftoken');
                 let response=fetch("/audio_test", {
-                method: "post",
-                body: data,
-                headers: { "X-CSRFToken": csrftoken },
-            })
+                    method: "post",
+                    body: data,
+                    headers: { "X-CSRFToken": csrftoken },
+                });
+            };
+
+            function sendAudioFile(blob, audioUrl) 
+            {
+                let csrftoken = getCookie('csrftoken');
+                const formData = new FormData();
+                formData.append("audio-file", blob);
+                let response = fetch("/audio_test", {
+                    method: 'POST',
+                    body: formData,
+                    headers: { "X-CSRFToken": csrftoken },
+                });
+            };
+
+            function sendAudio(blob)
+            {
+                let csrftoken = getCookie('csrftoken');
+                var webmFile = new File([ blob ], "audio.webm");      
+                var form    = new FormData();
+                form.append("myAudio", webmFile);
+                
+                let response = fetch("/audio_test", {
+                    method: 'POST',
+                    body: form,
+                    headers: { "X-CSRFToken": csrftoken },
+                });
+            }
             
             function getCookie(name) {
                 var cookieValue = null;
@@ -146,8 +177,7 @@ print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}</textarea>
                     }
                 }
                 return cookieValue;
-            }
-        }
+            };
         });
 
     </script>

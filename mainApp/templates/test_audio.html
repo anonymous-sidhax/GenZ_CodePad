@@ -15,7 +15,8 @@
 
         navigator.mediaDevices.getUserMedia({ audio: true })
         .then(stream => {
-            const mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/wav' });
+            // const mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/wav' });
+            const mediaRecorder = new MediaRecorder(stream);
             console.log("Recording Start");
             mediaRecorder.start();
 
@@ -30,7 +31,7 @@
                 const audioUrl = URL.createObjectURL(audioBlob);
                 const audio = new Audio(audioUrl);
                 sendData(audioBlob)
-                audio.play();
+                // audio.play();
             });
 
             setTimeout(() => {

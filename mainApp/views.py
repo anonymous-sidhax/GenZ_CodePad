@@ -62,7 +62,7 @@ def runcode(request):
 # Audio Test
 def audio_test(request):
         print(type(request.body))
-        print(request.body)
+        # print(request.body)
         #print (request.body.decode())
         return HttpResponse('audio received')
 

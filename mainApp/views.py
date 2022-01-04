@@ -19,7 +19,7 @@ import sys
 #     return render(request, "index.html")
 
 def index(request):
-    return render(request, "index2.html")
+    return render(request, "index.html")
 
 def about_us(request):
     return render(request, "about_us.html")

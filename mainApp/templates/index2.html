@@ -47,7 +47,7 @@
               <img src="{% static 'images/header logo.svg' %}" alt="Header Logo" width="250">
             </a>
           </div>
-          <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+          <!-- <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a> -->
           <nav id="menu" class="main-nav" role="navigation">
             <ul class="main-menu">
               <li><a href="#main-header">Home</a></li>
@@ -272,14 +272,14 @@
         });
       };
 
-      $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
-        if ($(e.target).hasClass('external')) {
-          return;
-        }
-        e.preventDefault();
-        $('#menu').removeClass('active');
-        showSection($(this).attr('href'), true);
-      });
+      // $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
+      //   if ($(e.target).hasClass('external')) {
+      //     return;
+      //   }
+      //   e.preventDefault();
+      //   $('#menu').removeClass('active');
+      //   showSection($(this).attr('href'), true);
+      // });
 
       $(window).scroll(function () {
         checkSection();

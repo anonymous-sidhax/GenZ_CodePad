@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+
+      <link rel="stylesheet" href="{% static 'css/templatemo-grad-school.css' %}">
+
+      <title>GenZ CodePad</title>
+
+      <!-- Required meta tags for other devices -->
+      {% comment %} <meta charset="utf-8"> {% endcomment %}
+      {% comment %} <meta name="description" content="The Next-Generation Code Editor"> {% endcomment %}
+      {% comment %} <meta name="author" content="The GenZ CodePAd Team"> {% endcomment %}
+      {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% endcomment %}
+      <!--  ------------------------------------------------------------------------------------------------------------- -->
+
+      <!-- fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+      <!-- --------------------------------------------------------------------------------------------------------------- -->
+
+      <!-- Bootstrap core CSS -->
+      <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+      <!-- ------------------------------------------------------------- -->
+
+      <!-- Additional CSS Files -->
+      <link rel="stylesheet" href="{% static 'css/templatemo-grad-school.css' %}">
+      <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+      <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+      <!-- ------------------------------------------------------------- -->
+
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="{% static 'images/code_editor_logo.gif' %}" type="image/gif">
+      <!-- ------------------------------------------------------------------------------ -->
+
+      <script>
+        window.onload = function(){
+          document.getElementById('clickButton').click();
+        }
+      </script>
+
+    </head>
+    <body>
+        <!--header-->
+        <header class="main-header clearfix" role="header">
+          <div class="logo">
+            <a href="#">
+              <img src="{% static 'images/header logo.svg' %}" alt="Header Logo" width="250">
+            </a>
+          </div>
+          <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+          <nav id="menu" class="main-nav" role="navigation">
+            <ul class="main-menu">
+              <li><a href="#main-header">Home</a></li>
+              <li><a href="{% url 'login' %}">Login</a></li>
+              <li><a href="{% url 'register' %}">Register</a></li>
+              <li><a href="{% url 'AboutUs' %}">About Us</a></li>
+              <!-- <li><a href="#section5">Video</a></li> -->
+              <!-- <li><a href="https://templatemo.com" class="external">External</a></li> -->
+            </ul>
+          </nav>
+        </header>
+        <!--header end-->
+
+
+        <!-- ***** Main Banner Area Start ***** -->
+        <section class="section main-banner" id="top" data-section="section1">
+        <video autoplay muted loop id="bg-video">
+          <source src="{% static 'videos/coding.mp4' %}" type="video/mp4"/>
+        </video>
+
+          <div class="video-overlay header-text">
+            <div class="caption">
+              <h2>Gen-Z Codepad</h2>
+              <h2>The <em>Next-Gen</em> Code Editor</h2>
+              <div class="main-button">
+                <div class="scroll-to-section"><a href="#section2">Discover more</a></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- ***** Main Banner Area End ***** -->
+
+
+        <!-- Features Section -->
+        <section class="features">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4 col-12">
+                <div class="features-post">
+                  <div class="features-content">
+                    <div class="content-show">
+                      <h4><i class="fas fa-solid fa-bolt"></i>Lightning-Fast</h4>
+                    </div>
+                    <div class="content-hide">
+                      <p>Built upon the "batteries-included" Django framework, GenZ Codepad is upto 10 times faster than other code editors!</p>
+                      <p class="hidden-sm">Faster than you can say, "Wow!".</p>
+                      <div class="scroll-to-section"><a href="#section2">More Info</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-12">
+                <div class="features-post second-features">
+                  <div class="features-content">
+                    <div class="content-show">
+                      <h4><i class="fas fa-recycle"></i>Cross-Platform</h4>
+                    </div>
+                    <div class="content-hide">
+                      <p>No matter what operating system you are using, Codepad is designed to run flawlessly on it!</p>
+                      <p class="hidden-sm">Runs even on a toaster.</p>
+                      <div class="scroll-to-section"><a href="#section3">More Info</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-12">
+                <div class="features-post third-features">
+                  <div class="features-content">
+                    <div class="content-show">
+                      <h4><i class="fas fa-box-open"></i>Open Source</h4>
+                    </div>
+                    <div class="content-hide">
+                      <p>The source code of GenZ is completely open-source, meaning that bugs are squashed faster!</p>
+                      <p class="hidden-sm">More open than introverts.</p>
+                      <div class="scroll-to-section"><a href="#section4">More Info</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--  -->
+
+        <section class="section why-us" data-section="section2">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="section-heading">
+                  <h2>Why choose GenZ?</h2>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div id='tabs'>
+                  <ul>
+                    <li><a href='#tabs-1'>Best Education</a></li>
+                    <li><a href='#tabs-2'>Top Management</a></li>
+                    <li><a href='#tabs-3'>Quality Meeting</a></li>
+                  </ul>
+                  <section class='tabs-content'>
+                    <article id='tabs-1'>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img src="assets/images/choose-us-image-01.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                          <h4>Best Education</h4>
+                          <p>Grad School is free educational HTML template with Bootstrap 4.5.2 CSS layout. Feel free to use
+                            it for educational or commercial purposes. You may want to make <a
+                              href="https://paypal.me/templatemo" target="_parent" rel="sponsored">a little donation</a> to
+                            TemplateMo. Please tell your friends about us. Thank you.</p>
+                        </div>
+                      </div>
+                    </article>
+                    <article id='tabs-2'>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img src="assets/images/choose-us-image-02.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                          <h4>Top Level</h4>
+                          <p>You can modify this HTML layout by editing contents and adding more pages as you needed. Since
+                            this template has options to add dropdown menus, you can put many HTML pages.</p>
+                          <p>Suspendisse tincidunt, magna ut finibus rutrum, libero dolor euismod odio, nec interdum quam
+                            felis non ante.</p>
+                        </div>
+                      </div>
+                    </article>
+                    <article id='tabs-3'>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img src="assets/images/choose-us-image-03.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                          <h4>Quality Meeting</h4>
+                          <p>You are NOT allowed to redistribute this template ZIP file on any template collection website.
+                            However, you can use this template to convert into a specific theme for any kind of CMS platform
+                            such as WordPress. For more information, you shall <a rel="nofollow"
+                              href="https://templatemo.com/contact" target="_parent">contact TemplateMo</a> now.</p>
+                        </div>
+                      </div>
+                    </article>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      
+
+
+
+        <!-- <form action="/runcode" method="post">
+            {% csrf_token %}
+
+            <div class="codearea">  
+                <label for="codearea">Code Area</label><br>
+                <textarea class="code_editor" name="codearea" placeholder="Start coding from here..." >{{code}}</textarea>
+            </div>
+
+            <div class="codeoutput">  
+                <label for="codeoutput">Output</label><br>
+                <textarea class="code_output" name="codeoutput" rows="6" disabled>{{output}}</textarea>
+            </div>
+            
+            <button type="submit" class="code_run">Submit</button
+
+        </form>
+         -->
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'js/isotope.min.js' %}"></script>
+    <script src="{% static 'js/owl-carousel.js' %}"></script>
+    <script src="{% static 'js/lightbox.js' %}"></script>
+    <script src="{% static 'js/tabs.js' %}"></script>
+    <script src="{% static 'js/video.js' %}"></script>
+    <script src="{% static 'js/slick-slider.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/3181810f7b.js" crossorigin="anonymous"></script>
+    <!-- ------------------------------------------------------------------- -->
+    <script>
+
+      //according to loftblog tut
+      $('.nav li:first').addClass('active');
+
+      var showSection = function showSection(section, isAnimate) {
+        var
+          direction = section.replace(/#/, ''),
+          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+          reqSectionPos = reqSection.offset().top - 0;
+
+        if (isAnimate) {
+          $('body, html').animate({
+            scrollTop: reqSectionPos
+          },
+            800);
+        } else {
+          $('body, html').scrollTop(reqSectionPos);
+        }
+
+      };
+
+      var checkSection = function checkSection() {
+        $('.section').each(function () {
+          var
+            $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+          if (topEdge < wScroll && bottomEdge > wScroll) {
+            var
+              currentId = $this.data('section'),
+              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+            reqLink.closest('li').addClass('active').
+              siblings().removeClass('active');
+          }
+        });
+      };
+
+      $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
+        if ($(e.target).hasClass('external')) {
+          return;
+        }
+        e.preventDefault();
+        $('#menu').removeClass('active');
+        showSection($(this).attr('href'), true);
+      });
+
+      $(window).scroll(function () {
+        checkSection();
+      });
+    </script>
+
+    </body>
+</html>

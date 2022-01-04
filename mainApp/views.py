@@ -3,8 +3,8 @@ from django.shortcuts import render
 
 #delete
 from django.http import HttpResponse
-import speech_recognition as sr
-from pydub import AudioSegment
+# import speech_recognition as sr
+# from pydub import AudioSegment
 #delete
 
 from mainApp.core.processor import Processor
@@ -19,7 +19,7 @@ import sys
 #     return render(request, "index.html")
 
 def index(request):
-    return render(request, "index.html")
+    return render(request, "index2.html")
 
 def about_us(request):
     return render(request, "about_us.html")

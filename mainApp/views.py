@@ -3,8 +3,8 @@ from django.shortcuts import render
 
 #delete
 from django.http import HttpResponse
-import speech_recognition as sr
-from pydub import AudioSegment
+# import speech_recognition as sr
+# from pydub import AudioSegment
 #delete
 
 from mainApp.core.processor import Processor

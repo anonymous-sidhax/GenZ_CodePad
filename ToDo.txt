@@ -30,3 +30,93 @@ Future Features:
 
 
 https://docs.google.com/document/d/e/2PACX-1vSGRicRTJ2iv7rzLnwYxGnUb39usUk_5o2KPxJ5YE91qv-W_lWHD1C7S4syAHM61VAheR5lQ6hoE55W/pub#h.msq2mfk3v13y  
+
+GenZ COdepad
+
+Example Sites: 
+https://codeanywhere.com/
+https://codesandbox.io/s/hungry-bhabha-ht5bu?file=/src/App.js
+
+
+Moto:
+Hands free coding
+
+
+Code Editor Changes:
+Jump to definition - https://blog.replit.com/intel
+Find References - https://blog.replit.com/intel
+Refactor - https://blog.replit.com/intel
+Linting - https://blog.replit.com/intel
+Hover - https://blog.replit.com/intel
+Formatting - https://blog.replit.com/intel
+
+Output Box Changes:
+execution time
+memory consumption
+exit signal
+generated output data
+runtime errors
+warnings and compilation errors
+
+
+
+Code Changes:
+Send Email for confirmation(signup)
+Visit Repo
+Share Code - Expiry Period (Show URL then show options to share on whatsapp web, fb, gmail, twitter, Create QR Code of link)
+Clone, commit and push to github
+Add our badge GenZ
+Speed, Storage, Memory, Security (https://replit.com/site/ide)
+Custom Input Checkbox (https://www.codechef.com/ide)
+Refresh Code button to standard by default code (https://www.codechef.com/ide)
+Keyboard Bindings or Shortcuts (https://www.codechef.com/ide)
+Maximize Code Editor
+Settings - Theme Dropdown(Dark themes, bright), Keyboard (Default, Vim, Emacs, Sublime, VS Code, Ace), Font Size, Tab Size, AutoComplete(Code Intelligence), Cursor Style, Highlight Active Line
+Multiplayer Invites (https://replit.com/@siddeshshewde/test#main.py)
+Help and shortcuts - https://replit.com/@siddeshshewde/test#main.py
+Unit tests - https://replit.com/@siddeshshewde/test#main.py
+
+Menu Bar
+File - New Tab, Open/Load FIle, Save As, Rename, Print preview, Download As(html, md, pdf, py, tex, zip, rar), Close/Exit
+Edit - Copy current tab, Cut, Delete, Edit Tab Metadata (name, display name, language, version, fileextension), find and replace
+View - Toggle Header, Toggle Toolbar, Show/Hide Line Numbers
+Kernal - Interrupt, Restart, Restart and Clear Output, Restart and Run All, Reconnect, Shutdown, Change Kernal
+Help - Edit Keyboard Shortcuts, About
+
+
+Features:
+- Simple & Clean Design, Lightweight, Easy & Fast
+- Interactive program execution which makes the user to give program inputs at real time
+- Helpful for beginners to learn and practice programs
+- Dark & Light theme options and customizable code editor with more themes
+- Options to Copy or Download the Output of the Program
+- Expandable Output Terminal
+- Coding sharing option helps you to save your code in cloud so that it can be accessed anytime and anywhere with internet
+
+
+What is GenZ
+Online IDE is a web-based tool powered by ACE code editor. This tool can be used to learn, build, run, test your program. 
+You can open the code from your local and continue to build using this IDE. Code and the output can be downloaded.
+
+How to use GenZ
+Choose a programming language, enter the source code with optional input data... and you are ready to go!
+
+Having Problems?
+Check the samples(https://ideone.com/samples) to see how to write code which works correctly.To find out more visit our FAQ section(https://ideone.com/faq).
+
+Privacy and Policy Terms
+
+
+Github Example:
+https://github.com/sahildua2305/hackIDE/blob/master/hackIDE/views.py
+https://devpost.com/software/speech-to-code
+https://github.com/omcoolkarni22/CodeIt
+
+Reference Key STrokes:
+https://github.com/dictation-toolbox/Caster/blob/master/docs/CasterQuickReference.pdf
+https://docs.google.com/document/d/e/2PACX-1vSGRicRTJ2iv7rzLnwYxGnUb39usUk_5o2KPxJ5YE91qv-W_lWHD1C7S4syAHM61VAheR5lQ6hoE55W/pub#h.1yuk6bfgf9wq
+
+
+
+
+Microphone Permission Check - https://medium.com/joinglimpse/how-to-build-beautiful-camera-microphone-permission-checking-for-websites-e6a08415fa76

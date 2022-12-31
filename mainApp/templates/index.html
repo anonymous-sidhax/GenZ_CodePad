@@ -1,194 +1,435 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
-    <head>
-        <link rel="stylesheet" href="{% static 'css/home-style.css' %}">
-        <title>
-            GenZ CodePad
-        </title>
-        
-        
-        {% comment %} <meta charset="utf-8"> {% endcomment %}
-        {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% endcomment %}
-        <script>
-            window.onload = function(){
-                document.getElementById('clickButton').click();
-            }
-        </script>
+  <head>
 
-    </head>
-    <body>
-        <nav>
-           <h2 class="nav-logo">GenZ CodePad</h2>
-           <div class="nav-button-section">
-                <button>
-                    <a style="color: black;" class="navbar-urls" href="{% url 'login' %}">Login</a>
-                </button>
-                <button>
-                    <a class="navbar-urls" href="{% url 'register' %}">Register</a>
-                </button>
-                <button>
-                    <a style="color: black;" class="navbar-urls" href="{% url 'AboutUs' %}">About US</a>
-                </button>
-           </div>
-        </nav>  
+    <title>GenZ CodePad</title>
 
-        <div class="controls">
-            <button>Output</button>
-            <select name="lang" id="">
-                <option value="cpp">Python3</option>
-                <option value="c">C</option>
-                <option value="python">C++</option>
-                <option value="java">Java</option>
-                <option value="js">JavaScript</option>
-            </select>
-        </div>
-        
-        
-        
-        <form action="/process_speech" method="post">
-            {% csrf_token %}
-            <div class="codearea">  
-                <textarea class="code_editor" name="codearea" placeholder="" >
-{% if code %}{{code}}
-{% else %}# Online Python compiler (interpreter) to run Python online.
-# Write Python 3 code in this online editor and run it.
+    <!-- Required meta tags for other devices -->
 
-def sum(a, b):
-    return (a + b)
+    {% comment %} <meta charset="utf-8"> {% endcomment %}
+    {% comment %} <meta name="description" content="The Next-Generation Code Editor"> {% endcomment %}
+    {% comment %} <meta name="author" content="The GenZ CodePAd Team"> {% endcomment %}
+    {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% endcomment %}
 
-a = 10
-b = 20
+    <!--  ------------------------------------------------------------------------------------------------------------- -->
 
-print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}</textarea>
-            </div>
-            <div class="codeoutput">  
-                <label for="codeoutput">Output</label><br>
-                <textarea class="code_output" name="codeoutput" rows="6" disabled>{{output}}</textarea>
-            </div>
-            <button type="submit" class="code_run">Submit</button>
-        </form>
 
-        <form action="/process_speech" method="post">
-            {% csrf_token %}
-            <button type="submit">Enable Speech to Text</button>
-        </form>
-    </body>
-</html>
+    <!-- fonts -->
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <!-- --------------------------------------------------------------------------------------------------------------- -->
+
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- ------------------------------------------------------------- -->
+
+
+    <!-- Additional CSS Files -->
+
+    <link rel="stylesheet" href="{% static 'css/home-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flex-slider.css' %}">
+
+    <!-- ------------------------------------------------------------- -->
+
+
+    <!-- Favicon -->
+
+    <link rel="shortcut icon" href="{% static 'images/code_editor_logo.gif' %}" type="image/gif">
+
+    <!-- ------------------------------------------------------------------------------ -->
 
 
 
-
-<!--
-<html>
-    <head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title></title>
-    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
-        
-        navigator.permissions.query({name:'microphone'}).then(function(result) {
-            if (result.state == 'granted') {
-                console.log("Granted");
-            } else if (result.state == 'prompt') {
-                console.log("Prompt");
-            }
 
-            // Don't do anything if the permission was denied.
-        });
-
-        navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(stream => {
-            var options = {mimeType: 'audio/webm'};
-            const mediaRecorder = new MediaRecorder(stream, options);
-            console.log("Recording Start");
-            mediaRecorder.start();
-
-            const audioChunks = [];
-
-            mediaRecorder.ondataavailable = event => {
-                audioChunks.push(event.data);
-            }
-
-            mediaRecorder.addEventListener("stop", () => {
-                const audioBlob = new Blob(audioChunks, { 'type': 'audio/ogg;' });
-                const audioUrl = URL.createObjectURL(audioBlob);
-                const audio = new Audio(audioUrl);
-                console.log(audioUrl);
-                //sendAudioFile(audioBlob, audioUrl);
-                sendAudio(audioBlob);
-                //sendData(audioBlob);
-                console.log(typeof audioBlob);
-                console.log(audioBlob);
-                console.log(audioChunks);
-                console.log(typeof audioChunks);
-                audio.play();
-            });
-
-            setTimeout(() => {
-                mediaRecorder.stop();
-                console.log("Recording Stopped");
-            }, 2000);
-
-            function sendData(data) 
-            {
-                let csrftoken = getCookie('csrftoken');
-                let response=fetch("/audio_test", {
-                    method: "post",
-                    body: data,
-                    headers: { "X-CSRFToken": csrftoken },
-                });
-            };
-
-            function sendAudioFile(blob, audioUrl) 
-            {
-                let csrftoken = getCookie('csrftoken');
-                const formData = new FormData();
-                formData.append("audio-file", blob);
-                let response = fetch("/audio_test", {
-                    method: 'POST',
-                    body: formData,
-                    headers: { "X-CSRFToken": csrftoken },
-                });
-            };
-
-            function sendAudio(blob)
-            {
-                let csrftoken = getCookie('csrftoken');
-                var webmFile = new File([ blob ], "audio/ogg");      
-                var form    = new FormData();
-                form.append("myAudio", webmFile);
-                
-                let response = fetch("/audio_test", {
-                    method: 'POST',
-                    body: form,
-                    headers: { "X-CSRFToken": csrftoken },
-                });
-            }
-            
-            function getCookie(name) {
-                var cookieValue = null;
-                if (document.cookie && document.cookie !== '') {
-                    var cookies = document.cookie.split(';');
-                    for (var i = 0; i < cookies.length; i++) {
-                        var cookie = cookies[i].trim();
-                        // Does this cookie string begin with the name we want?
-                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                            break;
-                        }
-                    }
-                }
-                return cookieValue;
-            };
-        });
+      window.onload = function()
+      {
+        document.getElementById('clickButton').click();
+      }
 
     </script>
-    
-    </head>
-    <body>
-        
-        
-    
-    </body>
+
+  </head>
+
+  <body>
+
+    <!-- Back to top button -->
+
+    <a id="back-to-top" href="#" class="mr-m2b btn btn-info btn-md back-to-top" role="button">
+      <i class="fas fa-chevron-up"></i>
+      BACK TO TOP
+    </a>
+
+    <!-- ------------------------------------------------------------------------------ -->
+
+
+    <!-- ***** Header Start ***** -->
+
+    <header class="main-header clearfix" role="header">
+      <div class="logo">
+        <a href="{% url 'homepage' %}">
+          <img src="{% static 'images/header logo.svg' %}" alt="Header Logo" width="250">
+        </a>
+      </div>
+      <nav id="menu" class="main-nav" role="navigation">
+        <ul class="main-menu">
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'register' %}">Register</a></li>
+          <li><a href="{% url 'AboutUs' %}">About Us</a></li>
+          <li><a href="#section6">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ***** Header End ***** -->
+
+
+
+
+    <!-- ***** Main Banner Area Start ***** -->
+
+    <section class="section main-banner" id="top" data-section="section1">
+    <video autoplay muted loop id="bg-video">
+      <source src="{% static 'videos/coding.mp4' %}" type="video/mp4"/>
+    </video>
+
+    <div class="video-overlay header-text">
+      <div class="caption">
+        <h2>Gen-Z Codepad</h2>
+        <h2>The <em>Next-Gen</em> Code Editor</h2>
+        <div class="main-button">
+          <div class="scroll-to-section"><a href="#section2">Go To Editor</a></div>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <!-- ***** Main Banner Area End ***** -->
+
+
+    <!-- ***** Features Section Start ***** -->
+
+    <section class="features">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-12">
+            <div class="features-post">
+              <div class="features-content">
+                <div class="content-show">
+                  <h4><i class="fas fa-solid fa-bolt"></i>Lightning-Fast</h4>
+                </div>
+                <div class="content-hide">
+                  <p>Built upon the "batteries-included" Django framework, GenZ Codepad is upto 10 times faster than other code editors!</p>
+                  <p class="hidden-sm">Faster than you can say, "Wow!".</p>
+                  <div class="scroll-to-section"><a href="#section2">More Info</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-12">
+            <div class="features-post second-features">
+              <div class="features-content">
+                <div class="content-show">
+                  <h4><i class="fas fa-recycle"></i>Cross-Platform</h4>
+                </div>
+                <div class="content-hide">
+                  <p>No matter what operating system you are using, Codepad is designed to run flawlessly on it!</p>
+                  <p class="hidden-sm">Runs even on a toaster.</p>
+                  <div class="scroll-to-section"><a href="#section2">More Info</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-12">
+            <div class="features-post third-features">
+              <div class="features-content">
+                <div class="content-show">
+                  <h4><i class="fas fa-box-open"></i>Open Source</h4>
+                </div>
+                <div class="content-hide">
+                  <p>The source code of GenZ is completely open-source, meaning that bugs are squashed faster!</p>
+                  <p class="hidden-sm">More open than introverts.</p>
+                  <div class="scroll-to-section"><a href="#section2">More Info</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ***** Features Section End ***** -->
+
+    <!-- ***** Main Editor and Output Section Start ***** -->
+
+    <section class="section coming-soon" data-section="section2">
+      <div class="section-heading">
+        <h2>WELCOME TO THE EDITOR</h2>
+      </div>
+          
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <div class="caption text-center mb-3">
+              <h3>Select your language:&nbsp;&nbsp;</h3>
+              <select name="lang" id="" my-3 align-self-center>
+                  <option value="python">Python3</option>
+                  <option value="c">C</option>
+                  <option value="cpp">C++</option>
+                  <option value="java">Java</option>
+                  <option value="js">JavaScript</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col h-100">
+            <form action="/process_speech" method="post">
+              {% csrf_token %}
+              <div class="codearea">
+                  <textarea class="code_editor" name="codearea" rows="20" cols="100">
+                    
+                    {% if code %}{{code}}
+                    {% else %}# Online Python compiler (interpreter) to run Python online.
+                    # Write Python 3 code in this online editor and run it.
+
+                    def sum(a, b):
+                        return (a + b)
+
+                    a = 10
+                    b = 20
+
+                    print(f'Sum of {a} and {b} is {sum(a, b)}'){% endif %}
+                    
+                  </textarea>
+                </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="row mb-5">
+          <div class="col mt-3 d-flex justify-content-around">
+            <button type="submit button" class="btn btn-lg btn-success btn-rounded">
+              <i class="fas fa-check-circle"></i>&nbsp;&nbsp;Submit
+            </button>
+            <button type="submit" class="btn btn-lg btn-info btn-rounded code_run">
+              <i class="fas fa-volume-up"></i>&nbsp;&nbsp;Speech To Text
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col d-flex justify-content-center mt-5">
+            <h2 class="h1 text-white border border-white p-4">OUTPUT</h2>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col d-flex justify-content-center"> 
+            <label for="codeoutput">Output
+              <textarea class="code_output" name="codeoutput" rows="20" cols="100" disabled>{{output}}</textarea>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ***** Main Editor and Output Section End ***** -->
+
+    <!-- ***** Contact Us Section Start ***** -->
+
+    <section class="section contact" data-section="section6">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Let's Keep In Touch</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <form id="contact" action="" method="post">
+              <div class="row">
+                <div class="col-md-6">
+                  <fieldset>
+                    <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required>
+                  </fieldset>
+                </div>
+                <div class="col-md-6">
+                  <fieldset>
+                    <input name="email" type="text" class="form-control" id="email" placeholder="Your Email" required>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..."
+                      required=""></textarea>
+                  </fieldset>
+                </div>
+                <div class="col-md-12 d-flex justify-content-center">
+                  <fieldset>
+                    <button type="submit" id="form-submit" class="button">Send Message Now</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <div id="map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3772.882385614257!2d72.837768!3d18.980801!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd639436f25375049!2sNavkar%20Darshan%20A%2FB%20Wing!5e0!3m2!1sen!2sus!4v1641314814702!5m2!1sen!2sus" width="600" height="420" style="border:0;" allowfullscreen="" loading="lazy">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ***** Contact Us Section End ***** -->
+
+    <!-- ***** Footer Section Start ***** -->
+  
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              
+              Copyright
+
+              <i class="fa fa-copyright"></i>
+
+              2021-22 by the GenZ Codepad Team
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ***** Footer Section End ***** -->
+
+    <!-- Scripts -->
+
+    <!-- Bootstrap and JQuery core JavaScript -->
+
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- ----------------------------------------------------------------------------- -->
+
+
+    <!-- Other JS libraries -->
+
+    <script src="{% static 'js/isotope.min.js' %}"></script>
+    <script src="{% static 'js/owl-carousel.js' %}"></script>
+    <script src="{% static 'js/lightbox.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/video.js' %}"></script>
+    <script src="{% static 'js/slick-slider.js' %}"></script>
+
+    <!-- ---------------------------------------------------- -->
+
+
+    <!-- FontAwesome -->
+
+    <script src="https://kit.fontawesome.com/3181810f7b.js" crossorigin="anonymous"></script>
+
+    <!-- ------------------------------------------------------------------- -->
+
+    <!-- Custom Scripts -->
+
+    <script>
+
+      //according to loftblog tut
+      $('.nav li:first').addClass('active');
+
+      var showSection = function showSection(section, isAnimate) {
+        var
+          direction = section.replace(/#/, ''),
+          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+          reqSectionPos = reqSection.offset().top - 0;
+
+        if (isAnimate) {
+          $('body, html').animate({
+            scrollTop: reqSectionPos
+          },
+            800);
+        } else {
+          $('body, html').scrollTop(reqSectionPos);
+        }
+
+      };
+
+      var checkSection = function checkSection()
+      {
+        $('.section').each(function () {
+          var
+            $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+          if (topEdge < wScroll && bottomEdge > wScroll) {
+            var currentId = $this.data('section'), reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+            reqLink.closest('li').addClass('active').siblings().removeClass('active');
+          }
+        });
+      };
+
+        $('.main-menu, .scroll-to-section').on('click', 'a', function (e)
+        {
+          if ($(e.target).hasClass('active'))
+          {
+            showSection($(this).attr('href'), true);
+            $('.main-menu li').removeClass();
+          }
+
+          else
+          {
+            // e.preventDefault();
+            $('.main-menu li').removeClass();
+          }
+        });
+      //   showSection($(this).attr('href'), true);
+      // });
+
+      $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
+        showSection($(this).attr('href'), true);
+        $('#section6').removeClass('active');
+      });
+
+      $(window).scroll(function () {
+        checkSection();
+      });
+
+      // script for back to top button
+      $(document).ready(function() {
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 50) {
+          $('#back-to-top').fadeIn();
+        } else {
+          $('#back-to-top').fadeOut();
+        }
+      });
+      // scroll body to 0px on click
+      $('#back-to-top').click(function() {
+        $('body,html').animate({
+          scrollTop: 0
+        }, 400);
+        return false;
+      });
+    });
+      
+    </script>
+
+    <!-- Custom Scripts End -->
+
+  </body>
+
 </html>
--->
